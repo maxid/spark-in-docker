@@ -1,7 +1,16 @@
 # spark-in-docker
 
-Spark 2.1.0, hadoop 2.7.3, anaconda 3.4.0, python 3.6 alpine based docker image
+alpine based Spark Docker container.
+
+This image is large and contains:
+
+* Spark 2.1.0
+* Hadoop 2.7.3
+* Anaconda 4.3.0 (full packages with matplotlib)
+* PySpark support with Python 3.6
+
+### usage
 
 ```
-docker run --rm -it -p 4040:4040 soflabs/spark
+docker run --rm -p 4040:4040 sofianito/spark
 ```
