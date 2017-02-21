@@ -10,7 +10,7 @@ RUN apk --update upgrade \
  && mkdir -p /opt
 
 # ANACONDA
-ENV CONDA_VERSION 4.3.0
+ENV CONDA_VERSION 4.2.0
 ENV CONDA_DIR /opt/anaconda
 ENV PATH $CONDA_DIR/bin:$PATH
 RUN mkdir -p "$CONDA_DIR" \
