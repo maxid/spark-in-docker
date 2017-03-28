@@ -48,7 +48,7 @@ RUN curl -sL --retry 3 \
   | tar x -C /opt/ \
  && mv /opt/$SPARK_PACKAGE $SPARK_HOME \
  && chown -R root:root $SPARK_HOME \
- && cp $SPARK_HOME/conf/log4j.properties.template SPARK_HOME/conf/log4j.properties
+ && cp $SPARK_HOME/conf/log4j.properties.template $SPARK_HOME/conf/log4j.properties
 
 WORKDIR $SPARK_HOME
 CMD ["bin/spark-class", "org.apache.spark.deploy.master.Master"]
