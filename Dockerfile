@@ -6,7 +6,7 @@ ENV PYTHONIOENCODING UTF-8
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 
 RUN apk --update upgrade \
- && apk add bash curl tar git file \
+ && apk add bash curl tar git file libstdc++ \
  && mkdir -p /opt
 
 # ANACONDA
@@ -47,8 +47,7 @@ RUN curl -sL --retry 3 \
   | gunzip \
   | tar x -C /opt/ \
  && mv /opt/$SPARK_PACKAGE $SPARK_HOME \
- && chown -R root:root $SPARK_HOME \
- && cp $SPARK_HOME/conf/log4j.properties.template $SPARK_HOME/conf/log4j.properties
+ && chown -R root:root $SPARK_HOME
 
 WORKDIR $SPARK_HOME
 CMD ["bin/spark-class", "org.apache.spark.deploy.master.Master"]
