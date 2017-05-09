@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-oraclejdk8
+FROM frolvlad/alpine-oraclejdk8:slim
 
 # http://blog.stuart.axelbrooke.com/python-3-on-spark-return-of-the-pythonhashseed
 ENV PYTHONHASHSEED 0
@@ -6,13 +6,14 @@ ENV PYTHONIOENCODING UTF-8
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 
 RUN apk --update upgrade \
- && apk add bash curl tar git file libstdc++ \
+ && apk add libstdc++ bash curl tar git file rsync \
  && mkdir -p /opt
 
 # ANACONDA
 ENV CONDA_VERSION 4.2.0
 ENV CONDA_DIR /opt/anaconda
 ENV PATH $CONDA_DIR/bin:$PATH
+ENV LD_LIBRARY_PATH /opt/anaconda/lib:{LD_LIBRARY_PATH}
 RUN mkdir -p "$CONDA_DIR" \
  && curl -sL --retry 3 \
    "https://repo.continuum.io/archive/Anaconda3-${CONDA_VERSION}-Linux-x86_64.sh" -o anaconda_installer.sh \
