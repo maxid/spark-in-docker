@@ -18,7 +18,7 @@ RUN mkdir -p "$CONDA_DIR" \
  && curl -sL --retry 3 \
    "https://repo.continuum.io/archive/Anaconda3-${CONDA_VERSION}-Linux-x86_64.sh" -o anaconda_installer.sh \
  && bash anaconda_installer.sh -f -b -p $CONDA_DIR \
- && conda install -y hdfs3 -c conda-forge
+ && conda install -y hdfs3 -c conda-forge \
  && conda update --all --yes \
  && conda clean --all --yes \
  && pip install py4j \
